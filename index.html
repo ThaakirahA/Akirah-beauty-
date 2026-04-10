@@ -1,172 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Akirah Beauty | Enhance your existing beauty</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Akirah Beauty | Enhance your existing beauty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FAF6F1;
+  --blush:#F2E8DF;
+  --rose:#C89080;
+  --deep-rose:#8B4E40;
+  --nude:#E8D5C4;
+  --charcoal:#2A2320;
+  --warm-gray:#9A8880;
+  --gold:#B8956A;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);
+  color:var(--charcoal);
+  font-family:'Jost',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+/* ANNOUNCEMENT BAR */
+.ann-bar{
+  background:var(--charcoal);
+  color:var(--nude);
+  text-align:center;
+  padding:10px 20px;
+  font-size:12px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  font-weight:400;
+}
 
-  <link rel="stylesheet" href="css/style.css" />
+/* HEADER */
+.header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(250,246,241,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(200,144,128,0.15);
+  padding:0 5%;
+}
+.nav-container{
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+  max-width:1300px;margin:0 auto;
+}
+.logo a{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:600;
+  letter-spacing:3px;
+  color:var(--charcoal);
+}
+.nav-links{
+  display:flex;list-style:none;gap:36px;
+}
+.nav-links a{
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--warm-gray);
+  transition:color 0.3s;
+  position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:1px;background:var(--rose);
+  transition:width 0.3s;
+}
+.nav-links a:hover{color:var(--charcoal)}
+.nav-links a:hover::after{width:100%}
+.btn{
+  display:inline-block;padding:11px 28px;
+  font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+  font-family:'Jost',sans-serif;font-weight:500;
+  transition:all 0.3s;cursor:pointer;border:none;
+}
+.btn-primary{
+  background:var(--charcoal);color:var(--cream);
+}
+.btn-primary:hover{background:var(--deep-rose);color:var(--white)}
+.btn-secondary{
+  background:transparent;color:var(--charcoal);
+  border:1px solid var(--charcoal);
+}
+.btn-secondary:hover{background:var(--charcoal);color:var(--cream)}
+
+/* HERO */
+.hero{
+  min-height:92vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:0;
+  overflow:hidden;
+  position:relative;
+}
+.hero-text-col{
+  padding:80px 8% 80px 10%;
+  display:flex;flex-direction:column;
+  gap:28px;
+}
+.hero-label{
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--rose);font-weight:500;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-label::before{
+  content:'';width:32px;height:1px;background:var(--rose);
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,5vw,72px);
+  font-weight:500;line-height:1.1;
+  color:var(--charcoal);
+}
+.hero h1 em{
+  font-style:italic;color:var(--rose);
+}
+.hero-sub{
+  font-size:15px;line-height:1.8;
+  color:var(--warm-gray);max-width:380px;
+}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
+.hero-img-col{
+  position:relative;height:100vh;overflow:hidden;
+  background:var(--nude);
+}
+.hero-img-col img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:center top;
+  filter:saturate(0.9);
+  transition:transform 6s ease;
+}
+.hero-img-col:hover img{transform:scale(1.04)}
+.hero-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right, var(--cream) 0%, transparent 15%);
+}
+.hero-scroll{
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--warm-gray);display:flex;flex-direction:column;
+  align-items:center;gap:10px;
+}
+.hero-scroll-line{
+  width:1px;height:48px;background:var(--rose);opacity:0.5;
+  animation:scrollLine 1.8s ease infinite;
+}
+@keyframes scrollLine{
+  0%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+
+/* MARQUEE */
+.marquee-section{
+  background:var(--charcoal);
+  padding:16px 0;overflow:hidden;
+}
+.marquee-track{
+  display:flex;gap:60px;
+  animation:marquee 20s linear infinite;
+  width:max-content;
+}
+.marquee-track span{
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--nude);white-space:nowrap;font-weight:400;
+}
+.marquee-track span.dot{color:var(--rose)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION SHARED */
+.section{padding:100px 10%}
+.container{max-width:1300px;margin:0 auto}
+.section-tag{
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--rose);font-weight:500;
+  margin-bottom:14px;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(34px,3vw,52px);
+  font-weight:500;line-height:1.15;
+  color:var(--charcoal);
+}
+
+/* CATEGORIES */
+.categories{background:var(--white);padding:100px 10%}
+.cat-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:56px;
+}
+.cat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.cat-card{
+  position:relative;overflow:hidden;cursor:pointer;
+  aspect-ratio:3/4;
+  background:var(--blush);
+}
+.cat-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.6s ease;
+  filter:saturate(0.85);
+}
+.cat-card:hover img{transform:scale(1.06)}
+.cat-card-info{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(42,35,32,0.75) 0%, transparent 55%);
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:28px 24px;
+  transition:all 0.3s;
+}
+.cat-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;
+  color:var(--white);
+  letter-spacing:1px;
+}
+.cat-link{
+  margin-top:8px;
+  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--nude);
+  display:flex;align-items:center;gap:8px;
+  opacity:0;transform:translateY(8px);
+  transition:all 0.3s;
+}
+.cat-link::after{content:'→'}
+.cat-card:hover .cat-link{opacity:1;transform:translateY(0)}
+
+/* BEST SELLERS */
+.bestsellers{padding:100px 10%;background:var(--cream)}
+.bs-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:56px;
+}
+.product-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:28px;
+}
+.product-card{cursor:pointer}
+.product-img{
+  aspect-ratio:1/1;overflow:hidden;
+  background:var(--blush);margin-bottom:18px;
+  position:relative;
+}
+.product-img img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(0.9);
+  transition:transform 0.6s ease;
+}
+.product-card:hover .product-img img{transform:scale(1.05)}
+.product-badge{
+  position:absolute;top:14px;left:14px;
+  background:var(--charcoal);color:var(--cream);
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 10px;
+}
+.product-info{display:flex;flex-direction:column;gap:6px}
+.product-name{
+  font-size:14px;letter-spacing:0.5px;
+  font-weight:400;color:var(--charcoal);
+}
+.product-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:600;
+  color:var(--rose);
+}
+
+/* ABOUT STRIP */
+.about-strip{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:560px;
+  background:var(--charcoal);
+}
+.about-img{overflow:hidden}
+.about-img img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(0.7) brightness(0.9);
+}
+.about-content{
+  padding:80px 8%;
+  display:flex;flex-direction:column;
+  justify-content:center;gap:28px;
+}
+.about-content .section-tag{color:var(--gold)}
+.about-content .section-title{color:var(--cream)}
+.about-content p{
+  font-size:15px;line-height:1.9;
+  color:rgba(232,213,196,0.75);max-width:420px;
+}
+.about-content .btn-secondary{
+  border-color:rgba(232,213,196,0.4);
+  color:var(--cream);width:fit-content;
+}
+.about-content .btn-secondary:hover{
+  background:var(--gold);border-color:var(--gold);color:var(--charcoal);
+}
+
+/* CUSTOM BOX */
+.custom-section{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:520px;
+  background:var(--blush);
+}
+.custom-content{
+  padding:80px 8%;
+  display:flex;flex-direction:column;
+  justify-content:center;gap:28px;
+}
+.custom-section .section-tag{color:var(--deep-rose)}
+.custom-note{
+  font-size:13px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--warm-gray);
+}
+.custom-img{overflow:hidden}
+.custom-img img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(0.9);
+  transition:transform 6s ease;
+}
+.custom-img:hover img{transform:scale(1.04)}
+
+/* GALLERY */
+.gallery{padding:80px 10%;background:var(--white)}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:260px 260px;
+  gap:12px;
+}
+.gallery-grid img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(0.85);
+  transition:all 0.4s;
+  cursor:pointer;
+}
+.gallery-grid img:hover{filter:saturate(1.1);transform:scale(1.01)}
+.gallery-grid .g-tall{grid-row:1/3}
+
+/* FOOTER STRIP */
+.footer-strip{
+  background:var(--charcoal);
+  padding:24px 10%;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:600;letter-spacing:3px;
+  color:var(--nude);
+}
+.footer-copy{
+  font-size:11px;letter-spacing:1.5px;
+  color:var(--warm-gray);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero-text-col>*{
+  animation:fadeUp 0.8s ease both;
+}
+.hero-text-col>*:nth-child(1){animation-delay:0.1s}
+.hero-text-col>*:nth-child(2){animation-delay:0.25s}
+.hero-text-col>*:nth-child(3){animation-delay:0.4s}
+.hero-text-col>*:nth-child(4){animation-delay:0.55s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-img-col{height:50vh}
+  .hero-text-col{padding:60px 6%}
+  .hero-img-overlay{background:linear-gradient(to bottom,var(--cream) 0%,transparent 20%)}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .about-strip,.custom-section{grid-template-columns:1fr}
+  .about-img{height:300px}
+  .custom-img{height:300px}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .g-tall{grid-row:auto}
+  .nav-links,.btn-primary{display:none}
+  .footer-strip{flex-direction:column;gap:12px;text-align:center}
+}
+</style>
 </head>
 <body>
 
-  <div class="announcement-bar">
-    <p>Custom beauty boxes available now | Order via WhatsApp</p>
+<div class="ann-bar">Custom beauty boxes available now &nbsp;·&nbsp; Order via WhatsApp</div>
+
+<header class="header">
+  <div class="nav-container">
+    <div class="logo"><a href="#">Akirah Beauty</a></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Lashes</a></li>
+        <li><a href="#">Beauty Boxes</a></li>
+        <li><a href="#">Custom Boxes</a></li>
+        <li><a href="#">Self Care</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#" class="btn btn-primary">Order Now</a>
   </div>
+</header>
 
-  <header class="header">
-    <div class="container nav-container">
-      <div class="logo">
-        <a href="index.html">Akirah Beauty</a>
-      </div>
-
-      <nav class="navbar">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="lashes.html">Lashes</a></li>
-          <li><a href="beauty-boxes.html">Beauty Boxes</a></li>
-          <li><a href="custom-boxes.html">Custom Boxes</a></li>
-          <li><a href="self-care.html">Self Care</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-
-      <a href="contact.html" class="btn btn-primary">Order Now</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text-col">
+    <span class="hero-label">Soft Luxury Beauty</span>
+    <h1>Enhance your<br><em>existing</em> beauty</h1>
+    <p class="hero-sub">Elegant lashes, curated beauty boxes, and personalised gifts designed to make every beauty moment feel special.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn btn-primary">Shop Collection</a>
+      <a href="#" class="btn btn-secondary">Build Your Box</a>
     </div>
-  </header>
+  </div>
+  <div class="hero-img-col">
+    <img src="images/hero.jpeg" alt="Akirah Beauty hero"/>
+    <div class="hero-img-overlay"></div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <span class="hero-label">Soft Luxury Beauty</span>
-        <h1>Enhance your existing beauty</h1>
-        <p>
-          Elegant lashes, curated beauty boxes, and personalised gifts designed
-          to make every beauty moment feel special.
-        </p>
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span>Lashes</span><span class="dot">✦</span>
+    <span>Beauty Boxes</span><span class="dot">✦</span>
+    <span>Custom Gifts</span><span class="dot">✦</span>
+    <span>Self Care</span><span class="dot">✦</span>
+    <span>Soft Luxury</span><span class="dot">✦</span>
+    <span>Enhance Your Beauty</span><span class="dot">✦</span>
+    <span>Lashes</span><span class="dot">✦</span>
+    <span>Beauty Boxes</span><span class="dot">✦</span>
+    <span>Custom Gifts</span><span class="dot">✦</span>
+    <span>Self Care</span><span class="dot">✦</span>
+    <span>Soft Luxury</span><span class="dot">✦</span>
+    <span>Enhance Your Beauty</span><span class="dot">✦</span>
+  </div>
+</div>
 
-        <div class="hero-buttons">
-          <a href="lashes.html" class="btn btn-primary">Shop Collection</a>
-          <a href="custom-boxes.html" class="btn btn-secondary">Build Your Box</a>
-        </div>
+<!-- CATEGORIES -->
+<section class="categories">
+  <div class="container">
+    <div class="cat-header">
+      <div>
+        <p class="section-tag">Browse</p>
+        <h2 class="section-title">Shop by Category</h2>
       </div>
-
-      <div class="hero-image">
-        <img src="images/hero.jpeg" alt="Hero Image" />
-      </div>
+      <a href="#" class="btn btn-secondary">View All</a>
     </div>
-  </section>
-
-  <!-- CATEGORIES -->
-  <section class="featured-categories section">
-    <div class="container">
-      <div class="section-heading">
-        <h2>Shop by Category</h2>
-      </div>
-
-      <div class="category-grid">
-        <div class="category-card">
-          <img src="images/category-lashes.JPEG" />
+    <div class="cat-grid">
+      <div class="cat-card">
+        <img src="images/category-lashes.JPEG" alt="Lashes"/>
+        <div class="cat-card-info">
           <h3>Lashes</h3>
-          <a href="lashes.html">View</a>
+          <span class="cat-link">View Collection</span>
         </div>
-
-        <div class="category-card">
-          <img src="images/category-boxes.jpg" />
+      </div>
+      <div class="cat-card">
+        <img src="images/category-boxes.jpg" alt="Beauty Boxes"/>
+        <div class="cat-card-info">
           <h3>Beauty Boxes</h3>
-          <a href="beauty-boxes.html">View</a>
+          <span class="cat-link">View Collection</span>
         </div>
-
-        <div class="category-card">
-          <img src="images/category-custom.webp" />
+      </div>
+      <div class="cat-card">
+        <img src="images/category-custom.webp" alt="Custom Boxes"/>
+        <div class="cat-card-info">
           <h3>Custom Boxes</h3>
-          <a href="custom-boxes.html">View</a>
+          <span class="cat-link">View Collection</span>
         </div>
-
-        <div class="category-card">
-          <img src="images/category-selfcare.png" />
+      </div>
+      <div class="cat-card">
+        <img src="images/category-selfcare.png" alt="Self Care"/>
+        <div class="cat-card-info">
           <h3>Self Care</h3>
-          <a href="self-care.html">View</a>
+          <span class="cat-link">View Collection</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- BEST SELLERS -->
-  <section class="best-sellers section">
-    <div class="container">
-      <div class="section-heading">
-        <h2>Best Sellers</h2>
-      </div>
-
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="images/product-1.jpeg" />
-          <h3>Golden Hour Lash</h3>
-          <span class="price">R120</span>
-        </div>
-
-        <div class="product-card">
-          <img src="images/product-2.JPEG" />
-          <h3>Soft Glam Lash</h3>
-          <span class="price">R120</span>
-        </div>
-
-        <div class="product-card">
-          <img src="images/product-3.jpg" />
-          <h3>Self Care Box</h3>
-          <span class="price">R250</span>
-        </div>
-
-        <div class="product-card">
-          <img src="images/product-4.webp" />
-          <h3>Beauty Gift Box</h3>
-          <span class="price">R300</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about-preview section">
-    <div class="container about-preview-content">
-      <img src="images/about-preview.png" />
-
+<!-- BEST SELLERS -->
+<section class="bestsellers">
+  <div class="container">
+    <div class="bs-header">
       <div>
-        <h2>About Akirah Beauty</h2>
-        <p>Soft luxury beauty designed to enhance your natural beauty.</p>
+        <p class="section-tag">Favourites</p>
+        <h2 class="section-title">Best Sellers</h2>
+      </div>
+      <a href="#" class="btn btn-secondary">All Products</a>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img">
+          <img src="images/product-1.jpeg" alt="Golden Hour Lash"/>
+          <div class="product-badge">Best Seller</div>
+        </div>
+        <div class="product-info">
+          <span class="product-name">Golden Hour Lash</span>
+          <span class="product-price">R120</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <img src="images/product-2.JPEG" alt="Soft Glam Lash"/>
+        </div>
+        <div class="product-info">
+          <span class="product-name">Soft Glam Lash</span>
+          <span class="product-price">R120</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <img src="images/product-3.jpg" alt="Self Care Box"/>
+          <div class="product-badge">Popular</div>
+        </div>
+        <div class="product-info">
+          <span class="product-name">Self Care Box</span>
+          <span class="product-price">R250</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">
+          <img src="images/product-4.webp" alt="Beauty Gift Box"/>
+        </div>
+        <div class="product-info">
+          <span class="product-name">Beauty Gift Box</span>
+          <span class="product-price">R300</span>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CUSTOM BOX -->
-  <section class="custom-highlight section">
-    <div class="container custom-highlight-content">
-      <div>
-        <h2>Create Your Own Beauty Box</h2>
-        <a href="custom-boxes.html" class="btn btn-primary">Customise</a>
-      </div>
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <div class="about-img">
+    <img src="images/about-preview.png" alt="About Akirah Beauty"/>
+  </div>
+  <div class="about-content">
+    <p class="section-tag">Our Story</p>
+    <h2 class="section-title">About<br>Akirah Beauty</h2>
+    <p>Soft luxury beauty designed to enhance the natural radiance you already carry. Every product is chosen with intention — to make you feel celebrated, every single day.</p>
+    <a href="#" class="btn btn-secondary">Learn More</a>
+  </div>
+</section>
 
-      <img src="images/custom-box.webp" />
+<!-- CUSTOM BOX -->
+<section class="custom-section">
+  <div class="custom-content">
+    <p class="section-tag">Personalised Gifting</p>
+    <h2 class="section-title">Create Your Own<br>Beauty Box</h2>
+    <p class="custom-note">Curated with love &nbsp;·&nbsp; Beautifully presented</p>
+    <a href="#" class="btn btn-primary">Start Customising</a>
+  </div>
+  <div class="custom-img">
+    <img src="images/custom-box.webp" alt="Custom Beauty Box"/>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="container">
+    <div class="gallery-grid">
+      <img src="images/gallery-1.jpg" alt="" class="g-tall"/>
+      <img src="images/gallery-2.jpeg" alt=""/>
+      <img src="images/gallery-3.png" alt=""/>
+      <img src="images/gallery-4.webp" alt=""/>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- GALLERY -->
-  <section class="gallery section">
-    <div class="container">
-      <div class="gallery-grid">
-        <img src="images/gallery-1.jpg" />
-        <img src="images/gallery-2.jpeg" />
-        <img src="images/gallery-3.png" />
-        <img src="images/gallery-4.webp" />
-      </div>
-    </div>
-  </section>
+<!-- FOOTER STRIP -->
+<footer class="footer-strip">
+  <div class="footer-logo">Akirah Beauty</div>
+  <div class="footer-copy">© 2025 Akirah Beauty · All rights reserved</div>
+</footer>
 
 </body>
 </html>
+
