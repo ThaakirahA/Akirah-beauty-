@@ -1,18 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Akirah Beauty</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beauty Boxes | Akirah Beauty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .box-catalog{padding:60px 10% 90px;background:var(--cream)}
+    .box-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px}
+    .box-card{background:var(--white);transition:transform 0.28s,box-shadow 0.28s;cursor:pointer}
+    .box-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(42,35,32,0.1)}
+    .box-img{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--blush)}
+    .box-img img{width:100%;height:100%;object-fit:cover;filter:saturate(0.88);transition:transform 0.5s}
+    .box-card:hover .box-img img{transform:scale(1.05)}
+    .box-badge{position:absolute;top:14px;left:14px;background:var(--charcoal);color:var(--cream);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;font-family:'Jost',sans-serif;font-weight:500}
+    .box-badge--rose{background:var(--rose)}
+    .box-body{padding:22px 24px 28px;display:flex;flex-direction:column;gap:10px}
+    .box-body h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--charcoal)}
+    .box-body p{font-size:13px;color:var(--warm-gray);line-height:1.75}
+    .box-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+    .box-price{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--rose)}
+    .box-includes{padding:20px 24px;border-top:1px solid var(--border)}
+    .box-includes-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin-bottom:10px}
+    .box-items{display:flex;flex-direction:column;gap:6px}
+    .box-item{font-size:12px;color:var(--charcoal);display:flex;align-items:center;gap:8px}
+    .box-item::before{content:'✦';font-size:7px;color:var(--rose);flex-shrink:0}
+
+    .whats-inside{padding:80px 10%;background:var(--white)}
+    .inside-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+    .inside-item{text-align:center;padding:28px 20px;border:1px solid var(--border)}
+    .inside-item .icon{font-size:24px;margin-bottom:14px}
+    .inside-item h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--charcoal);margin-bottom:8px}
+    .inside-item p{font-size:12px;color:var(--warm-gray);line-height:1.7}
+
+    .box-cta{padding:80px 10%;background:var(--charcoal);text-align:center}
+    .box-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,52px);font-weight:500;color:var(--white);margin:10px 0 18px}
+    .box-cta p{font-size:14px;color:rgba(232,213,196,0.7);max-width:440px;margin:0 auto 28px;line-height:1.85}
+
+    @media(max-width:900px){
+      .box-grid{grid-template-columns:1fr 1fr}
+      .inside-grid{grid-template-columns:1fr 1fr}
+      .box-catalog{padding:48px 6% 72px}
+      .whats-inside,.box-cta{padding:64px 6%}
+    }
+    @media(max-width:600px){
+      .box-grid{grid-template-columns:1fr}
+      .inside-grid{grid-template-columns:1fr 1fr}
+    }
+  </style>
 </head>
 <body>
-  <section class="section">
-    <div class="container">
-      <h1>Page Coming Soon</h1>
-      <p>This page is under construction.</p>
-      <a href="index.html" class="btn btn-primary">Back Home</a>
+  <div class="announcement-bar">
+    <p>Free delivery on orders over R300 &nbsp;·&nbsp; Order via WhatsApp</p>
+  </div>
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo"><a href="index.html">Akirah Beauty</a></div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lashes.html">Lashes</a></li>
+          <li><a href="beauty-boxes.html" class="active">Beauty Boxes</a></li>
+          <li><a href="custom-boxes.html">Custom Boxes</a></li>
+          <li><a href="self-care.html">Self Care</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <a href="contact.html" class="btn btn-primary nav-cta">Order Now</a>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lashes.html">Lashes</a></li>
+      <li><a href="beauty-boxes.html">Beauty Boxes</a></li>
+      <li><a href="custom-boxes.html">Custom Boxes</a></li>
+      <li><a href="self-care.html">Self Care</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary">Order Now</a>
+  </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="hero-label">Curated for You</span>
+      <h1>Beauty <em>Boxes</em></h1>
+      <p>Hand-curated boxes filled with our favourite beauty essentials — the perfect treat for yourself or someone special.</p>
     </div>
   </section>
+
+  <!-- BOXES -->
+  <section class="box-catalog">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Our Boxes</span>
+          <h2 class="section-title">Shop Beauty Boxes</h2>
+        </div>
+        <a href="custom-boxes.html" class="btn btn-outline">Build Custom Box</a>
+      </div>
+
+      <div class="box-grid">
+
+        <div class="box-card">
+          <div class="box-img">
+            <img src="images/product-3.jpg" alt="Mini Beauty Box"/>
+            <div class="box-badge">Starter</div>
+          </div>
+          <div class="box-body">
+            <h3>Mini Beauty Box</h3>
+            <p>A little taste of luxury — the perfect introduction to Akirah Beauty, or a thoughtful everyday gift.</p>
+            <div class="box-footer">
+              <span class="box-price">R150</span>
+              <a href="contact.html" class="btn btn-primary">Order Now</a>
+            </div>
+          </div>
+          <div class="box-includes">
+            <p class="box-includes-title">What's Inside</p>
+            <div class="box-items">
+              <div class="box-item">1 pair of Akirah lashes</div>
+              <div class="box-item">Lash glue</div>
+              <div class="box-item">Mini lip gloss</div>
+              <div class="box-item">Presented in a gift box</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="box-card">
+          <div class="box-img">
+            <img src="images/product-4.webp" alt="Classic Beauty Box"/>
+            <div class="box-badge box-badge--rose">Most Popular</div>
+          </div>
+          <div class="box-body">
+            <h3>Classic Beauty Box</h3>
+            <p>Our signature beauty box — a beautifully curated selection of our best-loved products, wrapped with care.</p>
+            <div class="box-footer">
+              <span class="box-price">R300</span>
+              <a href="contact.html" class="btn btn-primary">Order Now</a>
+            </div>
+          </div>
+          <div class="box-includes">
+            <p class="box-includes-title">What's Inside</p>
+            <div class="box-items">
+              <div class="box-item">2 pairs of Akirah lashes</div>
+              <div class="box-item">Lash glue & applicator</div>
+              <div class="box-item">Lip liner + gloss duo</div>
+              <div class="box-item">Makeup sponge</div>
+              <div class="box-item">Luxury gift wrapping</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="box-card">
+          <div class="box-img">
+            <img src="images/category-boxes.jpg" alt="Luxury Beauty Box"/>
+            <div class="box-badge">Premium</div>
+          </div>
+          <div class="box-body">
+            <h3>Luxury Beauty Box</h3>
+            <p>The ultimate Akirah experience — a generous collection of premium beauty essentials in a stunning keepsake box.</p>
+            <div class="box-footer">
+              <span class="box-price">R500</span>
+              <a href="contact.html" class="btn btn-primary">Order Now</a>
+            </div>
+          </div>
+          <div class="box-includes">
+            <p class="box-includes-title">What's Inside</p>
+            <div class="box-items">
+              <div class="box-item">3 pairs of Akirah lashes</div>
+              <div class="box-item">Full lash kit</div>
+              <div class="box-item">Lip liner + gloss + scrub</div>
+              <div class="box-item">Face mist & skin essentials</div>
+              <div class="box-item">Candle or bath product</div>
+              <div class="box-item">Premium keepsake box</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section class="whats-inside">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">The Details</span>
+          <h2 class="section-title">Why Our Boxes?</h2>
+        </div>
+      </div>
+      <div class="inside-grid">
+        <div class="inside-item">
+          <div class="icon">✦</div>
+          <h4>Hand-Curated</h4>
+          <p>Every box is personally put together with intention — nothing random, nothing filler.</p>
+        </div>
+        <div class="inside-item">
+          <div class="icon">◇</div>
+          <h4>Beautifully Packaged</h4>
+          <p>Wrapped with care and ready to gift. No extra wrapping needed from your side.</p>
+        </div>
+        <div class="inside-item">
+          <div class="icon">○</div>
+          <h4>Made to Impress</h4>
+          <p>Whether it's for you or someone else — every box is made to feel truly special.</p>
+        </div>
+        <div class="inside-item">
+          <div class="icon">✧</div>
+          <h4>Fully Customisable</h4>
+          <p>Want something different? Build your own custom box exactly the way you want it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="box-cta">
+    <span class="section-tag" style="color:var(--gold)">Something Personal?</span>
+    <h2>Want to build your own box?</h2>
+    <p>Choose exactly what goes inside — lashes, skin care, lip products, and more.</p>
+    <a href="custom-boxes.html" class="btn btn-light">Customise Your Box</a>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Akirah Beauty</span>
+        <p>Soft luxury beauty designed to enhance your natural radiance.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Shop</h4>
+        <a href="lashes.html">Lashes</a>
+        <a href="beauty-boxes.html">Beauty Boxes</a>
+        <a href="custom-boxes.html">Custom Boxes</a>
+        <a href="self-care.html">Self Care</a>
+      </div>
+      <div class="footer-links">
+        <h4>Info</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Akirah Beauty · All rights reserved</span></div>
+  </footer>
+  <script>
+    const h=document.getElementById('hamburger'),n=document.getElementById('mobileNav'),o=document.getElementById('mobileOverlay');
+    function t(){n.classList.toggle('open');o.classList.toggle('open');h.classList.toggle('active')}
+    h.addEventListener('click',t);o.addEventListener('click',t);
+  </script>
 </body>
 </html>
