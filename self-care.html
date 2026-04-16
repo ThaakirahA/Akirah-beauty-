@@ -1,18 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Akirah Beauty</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Self Care | Akirah Beauty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .sc-catalog{padding:60px 10% 90px;background:var(--cream)}
+    .sc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .sc-card{background:var(--white);cursor:pointer;transition:transform 0.28s,box-shadow 0.28s}
+    .sc-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(42,35,32,0.09)}
+    .sc-img{aspect-ratio:1/1;overflow:hidden;background:var(--blush);position:relative}
+    .sc-img img{width:100%;height:100%;object-fit:cover;filter:saturate(0.88);transition:transform 0.5s}
+    .sc-card:hover .sc-img img{transform:scale(1.06)}
+    .sc-cat{position:absolute;top:10px;left:10px;font-size:8px;letter-spacing:2px;text-transform:uppercase;font-weight:500;background:rgba(250,246,241,0.9);color:var(--charcoal);padding:3px 8px;font-family:'Jost',sans-serif}
+    .sc-body{padding:14px 15px 18px;display:flex;flex-direction:column;gap:5px}
+    .sc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+    .sc-body h3{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--charcoal)}
+    .sc-price{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--rose);white-space:nowrap}
+    .sc-body p{font-size:11px;color:var(--warm-gray);line-height:1.55}
+    .sc-body .btn{margin-top:8px;text-align:center;padding:10px}
+
+    .sc-ritual{padding:80px 10%;background:var(--charcoal)}
+    .ritual-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:52px}
+    .ritual-img{overflow:hidden}
+    .ritual-img img{width:100%;height:100%;object-fit:cover;filter:saturate(0.7) brightness(0.85)}
+    .ritual-text{padding:56px 8%;background:rgba(42,35,32,0.95);display:flex;flex-direction:column;justify-content:center;gap:20px}
+    .ritual-text .section-tag{color:var(--gold)}
+    .ritual-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,42px);font-weight:500;color:var(--white);line-height:1.2}
+    .ritual-text p{font-size:13px;color:rgba(232,213,196,0.72);line-height:1.85}
+    .ritual-steps{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+    .ritual-step{display:flex;align-items:flex-start;gap:14px;font-size:13px;color:rgba(232,213,196,0.8)}
+    .ritual-step-num{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--rose);flex-shrink:0;line-height:1.2}
+
+    .sc-feature{padding:80px 10%;background:var(--white)}
+    .feature-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:48px}
+    .feature-block{background:var(--white);padding:36px 28px}
+    .feature-block h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--charcoal);margin-bottom:10px}
+    .feature-block p{font-size:13px;color:var(--warm-gray);line-height:1.8}
+
+    @media(max-width:1100px){.sc-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:900px){
+      .sc-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+      .ritual-grid{grid-template-columns:1fr}
+      .ritual-img{height:280px}
+      .ritual-text{padding:48px 6%}
+      .feature-strip{grid-template-columns:1fr}
+      .sc-catalog{padding:48px 6% 72px}
+      .sc-ritual,.sc-feature{padding:64px 6%}
+    }
+    @media(max-width:600px){
+      .sc-grid{grid-template-columns:1fr 1fr;gap:10px}
+    }
+  </style>
 </head>
 <body>
-  <section class="section">
-    <div class="container">
-      <h1>Page Coming Soon</h1>
-      <p>This page is under construction.</p>
-      <a href="index.html" class="btn btn-primary">Back Home</a>
+  <div class="announcement-bar">
+    <p>Free delivery on orders over R300 &nbsp;·&nbsp; Order via WhatsApp</p>
+  </div>
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo"><a href="index.html">Akirah Beauty</a></div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lashes.html">Lashes</a></li>
+          <li><a href="beauty-boxes.html">Beauty Boxes</a></li>
+          <li><a href="custom-boxes.html">Custom Boxes</a></li>
+          <li><a href="self-care.html" class="active">Self Care</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <a href="contact.html" class="btn btn-primary nav-cta">Order Now</a>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lashes.html">Lashes</a></li>
+      <li><a href="beauty-boxes.html">Beauty Boxes</a></li>
+      <li><a href="custom-boxes.html">Custom Boxes</a></li>
+      <li><a href="self-care.html">Self Care</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary">Order Now</a>
+  </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="hero-label">For You</span>
+      <h1>Self <em>Care</em></h1>
+      <p>Because beauty starts from within. Our self-care range is designed to make your daily ritual feel like a luxury.</p>
     </div>
   </section>
+
+  <!-- PRODUCTS -->
+  <section class="sc-catalog">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">The Range</span>
+          <h2 class="section-title">Self Care Essentials</h2>
+        </div>
+      </div>
+      <div class="sc-grid">
+
+        <div class="sc-card">
+          <div class="sc-img">
+            <img src="images/category-selfcare.png" alt="Self Care Box"/>
+            <span class="sc-cat">Best Seller</span>
+          </div>
+          <div class="sc-body">
+            <div class="sc-top"><h3>Self Care Box</h3><span class="sc-price">R250</span></div>
+            <p>A curated selection of our favourite self-care essentials — the perfect pamper kit.</p>
+            <a href="contact.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="sc-card">
+          <div class="sc-img">
+            <div style="width:100%;height:100%;background:var(--nude);display:flex;align-items:center;justify-content:center;font-size:40px">🌹</div>
+            <span class="sc-cat">Skin</span>
+          </div>
+          <div class="sc-body">
+            <div class="sc-top"><h3>Face Mist</h3><span class="sc-price">R80</span></div>
+            <p>A refreshing hydrating mist to revive and glow up your skin throughout the day.</p>
+            <a href="contact.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="sc-card">
+          <div class="sc-img">
+            <div style="width:100%;height:100%;background:var(--blush);display:flex;align-items:center;justify-content:center;font-size:40px">🕯️</div>
+            <span class="sc-cat">Mood</span>
+          </div>
+          <div class="sc-body">
+            <div class="sc-top"><h3>Luxury Candle</h3><span class="sc-price">R120</span></div>
+            <p>Set the mood for your self-care ritual with a warm, subtle fragrance that lingers beautifully.</p>
+            <a href="contact.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="sc-card">
+          <div class="sc-img">
+            <div style="width:100%;height:100%;background:var(--nude);display:flex;align-items:center;justify-content:center;font-size:40px">🌸</div>
+            <span class="sc-cat">Skin</span>
+          </div>
+          <div class="sc-body">
+            <div class="sc-top"><h3>Glow Serum</h3><span class="sc-price">R120</span></div>
+            <p>A lightweight serum that leaves skin visibly brighter and more radiant after just a few uses.</p>
+            <a href="contact.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="sc-card">
+          <div class="sc-img">
+            <div style="width:100%;height:100%;background:var(--blush);display:flex;align-items:center;justify-content:center;font-size:40px">🫧</div>
+            <span class="sc-cat">Cleanse</span>
+          </div>
+          <div class="sc-body">
+            <div class="sc-top"><h3>Gentle Cleanser</h3><span class="sc-price">R90</span></div>
+            <p>Soft, effective daily cleansing that removes makeup and impurities without stripping moisture.</p>
+            <a href="contact.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="sc-card">
+          <div class="sc-img">
+            <div style="width:100%;height:100%;background:var(--nude);display:flex;align-items:center;justify-content:center;font-size:40px">💆</div>
+            <span class="sc-cat">Face</span>
+          </div>
+          <div class="sc-body">
+            <div class="sc-top"><h3>Eye Cream</h3><span class="sc-price">R95</span></div>
+            <p>Depuff and brighten the under-eye area with this gentle, targeted treatment cream.</p>
+            <a href="contact.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="sc-card">
+          <div class="sc-img">
+            <div style="width:100%;height:100%;background:var(--blush);display:flex;align-items:center;justify-content:center;font-size:40px">🌿</div>
+            <span class="sc-cat">Body</span>
+          </div>
+          <div class="sc-body">
+            <div class="sc-top"><h3>Body Oil</h3><span class="sc-price">R110</span></div>
+            <p>A nourishing, fast-absorbing body oil that leaves skin silky smooth and lightly scented.</p>
+            <a href="contact.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="sc-card">
+          <div class="sc-img">
+            <div style="width:100%;height:100%;background:var(--nude);display:flex;align-items:center;justify-content:center;font-size:40px">🪞</div>
+            <span class="sc-cat">Accessory</span>
+          </div>
+          <div class="sc-body">
+            <div class="sc-top"><h3>Vanity Mirror</h3><span class="sc-price">R85</span></div>
+            <p>A compact, rose-gold toned vanity mirror — the perfect finishing touch for your beauty space.</p>
+            <a href="contact.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RITUAL -->
+  <section class="sc-ritual">
+    <div class="ritual-grid">
+      <div class="ritual-img">
+        <img src="images/about-preview.png" alt="Self care ritual"/>
+      </div>
+      <div class="ritual-text">
+        <span class="section-tag">Your Daily Ritual</span>
+        <h2>Make every morning feel luxurious</h2>
+        <p>Self-care isn't a luxury — it's a foundation. Our products are designed to turn your daily routine into a moment of intention and calm.</p>
+        <div class="ritual-steps">
+          <div class="ritual-step"><span class="ritual-step-num">01</span><span>Cleanse and refresh your skin every morning and night.</span></div>
+          <div class="ritual-step"><span class="ritual-step-num">02</span><span>Apply serum while your skin is still slightly damp for maximum absorption.</span></div>
+          <div class="ritual-step"><span class="ritual-step-num">03</span><span>Finish with face mist to lock in moisture and give your skin a natural glow.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY SELF CARE -->
+  <section class="sc-feature">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Our Philosophy</span>
+          <h2 class="section-title">Why Self Care Matters</h2>
+        </div>
+      </div>
+      <div class="feature-strip">
+        <div class="feature-block">
+          <h3>Intentional Ingredients</h3>
+          <p>We only stock products with clean, skin-kind formulations. No harsh chemicals, no overwhelming fragrances — just effective, gentle care.</p>
+        </div>
+        <div class="feature-block">
+          <h3>For Every Skin Type</h3>
+          <p>Whether your skin is oily, dry, or sensitive — our range includes something that works for you without compromising on luxury feel.</p>
+        </div>
+        <div class="feature-block">
+          <h3>Pairs with Everything</h3>
+          <p>Our self-care range is designed to complement our lashes and beauty products — so your look starts with genuinely radiant skin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lash-cta">
+    <div class="container">
+      <div class="cta-box">
+        <p class="section-tag">Build Your Kit</p>
+        <h2>Want it all in one beautiful box?</h2>
+        <p>Bundle your favourite self-care products into a custom beauty box — perfect for gifting or treating yourself.</p>
+        <a href="custom-boxes.html" class="btn btn-light">Build a Custom Box</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Akirah Beauty</span>
+        <p>Soft luxury beauty designed to enhance your natural radiance.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Shop</h4>
+        <a href="lashes.html">Lashes</a>
+        <a href="beauty-boxes.html">Beauty Boxes</a>
+        <a href="custom-boxes.html">Custom Boxes</a>
+        <a href="self-care.html">Self Care</a>
+      </div>
+      <div class="footer-links">
+        <h4>Info</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Akirah Beauty · All rights reserved</span></div>
+  </footer>
+  <script>
+    const h=document.getElementById('hamburger'),n=document.getElementById('mobileNav'),o=document.getElementById('mobileOverlay');
+    function t(){n.classList.toggle('open');o.classList.toggle('open');h.classList.toggle('active')}
+    h.addEventListener('click',t);o.addEventListener('click',t);
+  </script>
 </body>
-</html> 
+</html>
+
